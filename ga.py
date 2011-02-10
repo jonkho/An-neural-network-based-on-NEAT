@@ -1,4 +1,5 @@
 import random
+import copy
 
 class Genome(object):
 	def __init__(self, genome=None, fitness=0.00):
@@ -52,7 +53,7 @@ class Genetic_Algorithm(object):
 			fitness_so_far = fitness_so_far + member.fitness
 			
 			if fitness_so_far >= a_slice:
-				return member
+				return copy.deepcopy(member)
 				
 		raise RuntimeError
 		

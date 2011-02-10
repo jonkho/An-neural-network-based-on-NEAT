@@ -98,16 +98,16 @@ class Process(object):
 				else:
 					print "chromosome %s with fitness %s has made a poor decision to buy and net is at %s" % (i, self.chromosomes[i].fitness, net_result)
 			
-			# else: # if it abstained when it should have
-			# 				net_result = self.data.calculate_gain_loss(frame_number=frame_number, frame_size=8, history_size=5)
-			# 				if net_result < 0:
-			# 					print "chromosome %s with fitness %s has made a good decision to abstain and net is at %s" % (i, self.chromosomes[i].fitness, net_result)
-			# 					self.chromosomes[i].fitness -= net_result
-			# 				
-			# 				else:	
-			# 					print "chromosome %s with fitness %s has made a poor decision to abstain and net is at %s" % (i, self.chromosomes[i].fitness, net_result)	
+			else: # if it abstained when it should have
+				net_result = self.data.calculate_gain_loss(frame_number=frame_number, frame_size=8, history_size=5)
+				if net_result < 0:
+					print "chromosome %s with fitness %s has made a good decision to abstain and net is at %s" % (i, self.chromosomes[i].fitness, net_result)
+					self.chromosomes[i].fitness -= net_result
 				
-				print "new fitness is: %s" % self.chromosomes[i].fitness
+				else:	
+					print "chromosome %s with fitness %s has made a poor decision to abstain and net is at %s" % (i, self.chromosomes[i].fitness, net_result)	
+	
+			print "new fitness is: %s" % self.chromosomes[i].fitness
 			
 		# calculate and track fitness scores	
 		self.genetic_algorithm.calculate_fitness_scores()	
